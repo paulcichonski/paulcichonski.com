@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://paulcichonski.github.io/sitemap.xml 
