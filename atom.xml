@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[paulcichonski.com blog]]></title>
-  <link href="http://paulcichonski.github.io/atom.xml" rel="self"/>
-  <link href="http://paulcichonski.github.io/"/>
-  <updated>2013-11-10T15:00:53-08:00</updated>
-  <id>http://paulcichonski.github.io/</id>
+  <link href="http://paulcichonski.com/atom.xml" rel="self"/>
+  <link href="http://paulcichonski.com/"/>
+  <updated>2013-11-10T15:13:06-08:00</updated>
+  <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
     
