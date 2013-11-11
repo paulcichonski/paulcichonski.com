@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | paulcichonski.com blog]]></title>
   <link href="http://paulcichonski.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://paulcichonski.com/"/>
-  <updated>2013-11-10T22:07:58-08:00</updated>
+  <updated>2013-11-10T22:12:01-08:00</updated>
   <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
@@ -26,7 +26,7 @@
 
 <p>```</p>
 
-<h2>This needs to happen on your first machine</h2>
+<h2>This needs to happen on your first machine, for some reason they are ignored by default.</h2>
 
 <p>cd source/
 git add _posts/
