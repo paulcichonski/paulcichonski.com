@@ -9,7 +9,7 @@
   <meta name="author" content="Paul Cichonski">
 
   
-  <meta name="description" content="As soon as I got this blog up and running, the first thing I did was to completely screw up my Octopress install (apparently I did need all those &hellip;">
+  <meta name="description" content="I just setup this blog using Octopress as the page generation engine and Github Pages to freely host the content. In total, it took me about four &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,88 +77,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/10/setting-up-octopress-on-a-new-machine/">Setting Up Octopress on a New Machine</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-10T20:46:00-08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As soon as I got this blog up and running, the first thing I did was to completely screw up my <a href="http://octopress.org/">Octopress</a> install (apparently I did need all those files I deleted), thus rendering the entire site useless. As with anything &ldquo;tinkering&rdquo; related, this is fairly normal so it is also fairly normal to rebuild from scratch. Luckily, smart people have <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">already figured out</a> how to do this.</p>
-
-<p>The following steps outline how to setup a fresh Octopress install that connects to an existing <a href="http://pages.github.com/">Github Pages</a>  repository. <strong>These steps assume that the Github repository is fully up to date with all latest changes</strong></p>
-
-<p>First you need to make sure that your <code>source</code> directory actually contains the <code>source/\_posts</code> folder (for some reason this was not true for me):</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>## This needs to happen on your first machine
-</span><span class='line'>cd source/
-</span><span class='line'>git add _posts/ 
-</span><span class='line'>git commit -m "adding posts dir"
-</span><span class='line'>git push origin source</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The remainder of the steps happen on your second machine. First clone the <code>source</code> branch</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone -b source git@github.com:username/username.github.com.git octopress
-</span><span class='line'>cd octopress</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next, install Octopress</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install bundler
-</span><span class='line'>rbenv rehash    # If you use rbenv, rehash to be able to run the bundle command
-</span><span class='line'>bundle install
-</span><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Octopress should now be setup, and the <code>source</code> dir should contain your up-to date markdown. To test things out make a change to a post (or make a new post) then regenerate and deploy.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
-</span><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Your new changes should appear on your site.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -262,10 +180,6 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/11/10/setting-up-octopress-on-a-new-machine/">Setting Up Octopress on a New Machine</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2013/11/10/building-this-blog-with-octopress/">Building This Blog With Octopress</a>
