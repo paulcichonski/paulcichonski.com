@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>paulcichonski.com blog</title>
+  <title>Setting Up Octopress on a new Machine - paulcichonski.com blog</title>
   <meta name="author" content="Paul Cichonski">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://paulcichonski.com">
+  <link rel="canonical" href="http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="paulcichonski.com blog" type="application/atom+xml">
@@ -75,15 +75,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/11/10/setting-up-octopress-on-a-new-machine/">Setting Up Octopress on a New Machine</a></h1>
+      <h1 class="entry-title">Setting Up Octopress on a New Machine</h1>
     
     
       <p class="meta">
@@ -106,7 +103,7 @@
   </header>
 
 
-  <div class="entry-content"><p>As soon as I got this blog up and running, the first thing I did was to completely screw up my <a href="http://octopress.org/">Octopress</a> install (apparently I did need all those files I deleted), thus rendering the entire site useless. As with anything &ldquo;tinkering&rdquo; related, this is fairly normal so it is also fairly normal to rebuild from scratch. Luckily, smart people have <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">already figured out</a> how to do this.</p>
+<div class="entry-content"><p>As soon as I got this blog up and running, the first thing I did was to completely screw up my <a href="http://octopress.org/">Octopress</a> install (apparently I did need all those files I deleted), thus rendering the entire site useless. As with anything &ldquo;tinkering&rdquo; related, this is fairly normal so it is also fairly normal to rebuild from scratch. Luckily, smart people have <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">already figured out</a> how to do this.</p>
 
 <p>The following steps outline how to setup a fresh Octopress install that connects to an existing <a href="http://pages.github.com/">Github Pages</a> repository (this builds on the zerosharp post with some updates based on recent changes in Octopress). <strong>These steps assume that the Github repository is fully up to date with all latest changes</strong></p>
 
@@ -164,22 +161,16 @@
 
 <p>Your new changes should appear on your site. The only downside of this approach is that when you go back to your original machine and try to deploy, git will yell at you (i.e., non-fast-forward error) because the <code>_deploy</code> dir from that machine is now out of date. The best way to fix this is to remove it (see above) and re-clone it (see above). The other option is to edit the <code>octopress/RakeFile</code> and change the line: <code>system "git push origin #{deploy_branch}"</code> to <code>system "git push origin +#{deploy_branch}"</code> to force the deployment despite version mismatches (<strong>be sure to undo this change immediately after</strong>).</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/10/building-this-blog-with-octopress/">Building This Blog With Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Paul Cichonski</span></span>
+
+      
 
 
 
@@ -191,82 +182,44 @@
   
 
 
-<time datetime="2013-11-10T15:14:00-08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-11-10T20:46:00-08:00" pubdate data-updated="true">Nov 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>I just setup this blog using <a href="http://octopress.org/">Octopress</a> as the page generation engine and <a href="http://pages.github.com/">Github Pages</a> to <strong>freely</strong> host the content. In total, it took me about four hours to get from start to first blog post, and that was mainly because my ruby environment on my dev machine was fairly messed up from mucking around six months ago.</p>
-
-<p>This initial post is both a how-to for setting up a blog with Octopress/Github and quick cheat-sheet so I don&rsquo;t forget how I did things.</p>
-
-<h2>Setup</h2>
-
-<p>The <a href="http://octopress.org/docs/setup/">Octopress setup docs</a> are incredibly helpful, so I&rsquo;m not going to duplicate content explaining what everything means. Assuming ruby is correctly installed the setup commands are as follows:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>## 1. Create personal github repo named "username.github.io", mine is "paulcichonski.github.io"
-</span><span class='line'>## 2. Clone Octopress repo locally and setup directory structure
-</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
-</span><span class='line'>cd octopress
-</span><span class='line'>rake install
-</span><span class='line'>## 3. connect your local install with your git repo (see Octopress docs for more details: http://octopress.org/docs/deploying/github/)
-</span><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The above commands will leave your &lsquo;/octopress&rsquo; dir in a state where you are ready to begin blogging. You can think of the &lsquo;/octopress&rsquo; dir as a container for all your blog content as well as the library for all the commands you need to push content to Github.</p>
-
-<h2>Important Octopress Files and Directories</h2>
-
-<p>The following files and directories comprise the essential building blocks for an Octopress site:</p>
-
-<ul>
-<li><strong>/octopress/_config.yml</strong>: Holds all the configuration for the site, Octopress uses this when generating your static HTML pages from markdown.</li>
-<li><strong>/octopress/source/</strong> &ndash; This is the directory that includes all the content you actually edit, it syncs with the &lsquo;source&rsquo; branch of your github repository. Remember to always commit any changes made in this directory to your &lsquo;source&rsquo; branch. Running &ldquo;rake generate&rdquo; from the &lsquo;/octopress&rsquo; dir level will take the files in &lsquo;source&rsquo;, parse them in combination with your &lsquo;_config.yml&rsquo; file and generate static html content into the &lsquo;_deploy&rsquo; dir.</li>
-<li><strong>/octopress/_deploy</strong> &ndash; This is the directory that Octopress will dynamically generate, it contains your actual website static HTML that people see. When you run &ldquo;rake deploy&rdquo; Octopress handles pushing all content from &lsquo;_deploy&rsquo; to the &lsquo;master&rsquo; branch of your github repo (i.e., the branch responsible for serving content).</li>
-</ul>
-
-
-<h2>Important Octopress Commands</h2>
-
-<p>The following commands are the most useful for doing basic things with Octopress</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>## generates static html by parsing markdown in 'source' directory, using '\_config.yml' for configuration parameters
-</span><span class='line'>rake generate
-</span><span class='line'>## deploys all content in '\_deploy' to the 'master' branch on your github repo 
-</span><span class='line'>rake deploy 
-</span><span class='line'>## binds a webserver to localhost:4000 that serves pages from '\_deploy'; watches for changes in 'source' and auto-generates all changes into '\_deploy'. Use this for local development.
-</span><span class='line'>rake preview </span></code></pre></td></tr></table></div></figure>
-
-
-<p>That is it for now, still need to document how to perform development from multiple machines and how to rebuild your local development workstation if something goes wrong.</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine/" data-via="" data-counturl="http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/10/building-this-blog-with-octopress/" title="Previous Post: Building this Blog with Octopress">&laquo; Building this Blog with Octopress</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -291,6 +244,7 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -305,7 +259,10 @@
       var disqus_shortname = 'paulcichonski';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine/';
+        var disqus_url = 'http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
