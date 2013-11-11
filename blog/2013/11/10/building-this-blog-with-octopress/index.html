@@ -9,8 +9,7 @@
   <meta name="author" content="Paul Cichonski">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="I just setup this blog using Octopress as the page generation engine and Github Pages to freely host the content. All and all it took me about four &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,7 +91,62 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>I just setup this blog using <a href="" title="http://octopress.org/">Octopress</a> as the page generation engine and <a href="http://pages.github.com/">Github Pages</a> to freely host the content. All and all it took me about four hours to get from start to first blog post, and that was mainly because my ruby environment on my dev machine was fairly messed up from mucking around six months ago.</p>
+
+<p>This initial post is both a how-to for setting up a blog with Octopress/Github and quick cheat-sheet so I don&rsquo;t forget how I did things.</p>
+
+<h2>Setup</h2>
+
+<p>The <a href="" title="http://octopress.org/docs/setup/">Octopress setup docs</a> are incredibly helpful, so I&rsquo;m not going to duplicate content explaining what everything means. Assuming ruby is correctly installed the setup commands are as follows:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>## 1. Create personal github repo named "username.github.io", mine is "paulcichonski.github.io"
+</span><span class='line'>## 2. Clone Octopress repo locally and setup directory structure
+</span><span class='line'>git clone git://github.com/imathis/octopress.git Octopress
+</span><span class='line'>cd Octopress
+</span><span class='line'>rake install
+</span><span class='line'>## 3. connect your local install with your git repo (see Octopress docs for more details: http://octopress.org/docs/deploying/github/)
+</span><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above commands will leave your &lsquo;/octopress&rsquo; dir in a state where you are ready to begin blogging. You can think of the &lsquo;/octopress&rsquo; dir as a container for all the commands you need to parse markdown into static HTML content for your blog as well as the engine powering the syncing with github.</p>
+
+<h2>Important Octopress Files and Directories</h2>
+
+<p>The following files and directories comprise the essential building blocks for an Octopress site:</p>
+
+<ul>
+<li>/octopress/_config.yml: Holds all the configuration for the site, Octopress uses this when generating your static HTML pages from markdown.</li>
+<li>/octopress/source/ &ndash; This is the directory that includes all the content you actually edit, it syncs with the &lsquo;source&rsquo; branch of your github repository. Remember to always commit any changes made in this directory to your &lsquo;source&rsquo; branch. Running &ldquo;rake generate&rdquo; from the &lsquo;/octopress&rsquo; dir level will take the files in source, parse them in combination with your &lsquo;_config.yml&rsquo; file and generate static html content into the &lsquo;_deploy&rsquo; dir.</li>
+<li>/octopress/_deploy &ndash; This is the directory that Octopress will dynamically generate, it contains your actual website static HTML that people see. When you run &ldquo;rake deploy&rdquo; Octopress handles pushing all content from &lsquo;_deploy&rsquo; to the &lsquo;master&rsquo; branch of your github repo (i.e., the branch responsible for serving content).</li>
+</ul>
+
+
+<h2>Important Octopress Commands</h2>
+
+<p>The following commands are the most useful for doing basic things with Octopress</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>## generates static html by parsing markdown in 'source' directory, using '\_config.yml' for configuration parameters
+</span><span class='line'>rake generate
+</span><span class='line'>## deploys all content in '\_deploy' to the 'master' branch on your github repo 
+</span><span class='line'>rake deploy 
+</span><span class='line'>## binds a webserver to localhost:4000 that serves pages from '\_deploy'; watches for changes in 'source' and auto-generates all changes into '\_deploy'. Use this for local development.
+</span><span class='line'>rake preview </span></code></pre></td></tr></table></div></figure>
+
+
+<p>That is it for now, still need to document how to perform development from multiple machines and how to rebuild your local development workstation if something goes wrong.</p>
 </div>
 
 
