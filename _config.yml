@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://paulcichonski.github.io
+url: http://paulcichonski.com
 title: paulcichonski.com blog
 subtitle: whatever I have been thinking about lately
 author: Paul Cichonski
@@ -90,7 +90,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: paulcichonski
 disqus_show_comment_count: false
 
 # Google Analytics
