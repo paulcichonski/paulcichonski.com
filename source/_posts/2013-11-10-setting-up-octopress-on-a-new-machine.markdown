@@ -13,7 +13,7 @@ The following steps outline how to setup a fresh Octopress install that connects
 First you need to make sure that your `source` directory actually contains the `source/_posts` and the `stylesheets` folder. You also need to make sure .gitignore is not ignoring any of these (if there is a reason these should not be committed please let me know, I could not think of any).
 
 ```
-## This needs to happen on your first machine
+## This needs to happen on your first machine, for some reason they are ignored by default.
 cd source/
 git add _posts/ 
 git add stylesheets
