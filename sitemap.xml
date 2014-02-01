@@ -2,11 +2,11 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://paulcichonski.com/blog/2013/11/10/building-this-blog-with-octopress/</loc>
-        <lastmod>2013-11-10T16:32:05-08:00</lastmod>
+        <lastmod>2014-02-01T13:22:05-08:00</lastmod>
     </url>
     <url>
         <loc>http://paulcichonski.com/blog/2013/11/10/setting-up-octopress-on-a-new-machine/</loc>
-        <lastmod>2013-11-10T22:11:52-08:00</lastmod>
+        <lastmod>2014-02-01T13:22:42-08:00</lastmod>
     </url>
     <url>
         <loc>http://paulcichonski.com/blog/2014/02/01/recent-talks/</loc>
@@ -14,11 +14,11 @@
     </url>
     <url>
         <loc>http://paulcichonski.com/blog/archives/</loc>
-        <lastmod>2014-02-01T11:38:10-08:00</lastmod>
+        <lastmod>2014-02-01T13:22:42-08:00</lastmod>
     </url>
     <url>
         <loc>http://paulcichonski.com/</loc>
-        <lastmod>2014-02-01T11:38:10-08:00</lastmod>
+        <lastmod>2014-02-01T13:22:42-08:00</lastmod>
     </url>
     <url>
         <loc>http://paulcichonski.com/robots.txt</loc>
