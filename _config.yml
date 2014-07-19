@@ -3,11 +3,12 @@
 # ----------------------- #
 
 url: http://paulcichonski.com
-title: paulcichonski.com blog
+title: paulcichonski.com
 subtitle: whatever I have been thinking about lately
 author: Paul Cichonski
 simple_search: http://google.com/search
-description:
+description: Personal blog about whatever I have been thinking about lately, normally focused on software and distributed systems, with a bit of ontology mixed in.
+keywords: "paul cichonski, software, engineering, cassandra, blog, systems theory, distributed systems, octopress"
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -50,7 +51,7 @@ titlecase: true       # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
-default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
+default_asides: [custom/asides/about.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
@@ -63,13 +64,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: 
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: paulcichonski
 twitter_tweet_button: true
 
 # Google +1
@@ -97,4 +98,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id: UA-45619319-1
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
