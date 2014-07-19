@@ -3,7 +3,11 @@ layout: post
 title: "Learning Hadoop: WebHdfsFileSystem vs FileSystem"
 date: 2014-07-19 10:25
 comments: true
-categories: hdfs, hadoop, scala
+published: true
+categories: 
+- hdfs 
+- hadoop 
+- scala
 ---
 
 For the last few weeks I've had the chance to start digging into the [Hadoop](http://hadoop.apache.org/) ecosystem focusing mainly on 
