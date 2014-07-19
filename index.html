@@ -5,13 +5,16 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>paulcichonski.com blog</title>
+  <title>paulcichonski.com</title>
   <meta name="author" content="Paul Cichonski">
 
+
+
+<meta name="description" content="Personal blog about whatever I have been thinking about lately, normally focused on software and distributed systems, with a bit of ontology mixed in.">
+
+
   
-  <meta name="description" content="For the last few weeks I&rsquo;ve had the chance to start digging into the Hadoop ecosystem focusing mainly on
-Spark for distributed compute (both &hellip;">
-  
+  <meta name="keywords" content="paul cichonski, software, engineering, cassandra, blog, systems theory, distributed systems, octopress" />
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -22,7 +25,7 @@ Spark for distributed compute (both &hellip;">
   <link rel="canonical" href="http://paulcichonski.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="paulcichonski.com blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="paulcichonski.com" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -45,11 +48,19 @@ Spark for distributed compute (both &hellip;">
   </script>
 
 
+  <meta property="og:url" content="http://paulcichonski.com/index.html">
+<meta property="og:type" content="website" />
+
+<meta property="og:title" content="paulcichonski.com">
+<meta property="og:description" content="Personal blog about whatever I have been thinking about lately, normally focused on software and distributed systems, with a bit of ontology mixed in.">
+ 
+
+
 </head>
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">paulcichonski.com blog</a></h1>
+  <h1><a href="/">paulcichonski.com</a></h1>
   
     <h2>whatever I have been thinking about lately</h2>
   
@@ -69,8 +80,9 @@ Spark for distributed compute (both &hellip;">
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+   <li><a href="/">Blog</a></li>
+   <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
@@ -434,6 +446,44 @@ about how the component parts of the ecosystem fit together. Lots more to learn 
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/02/01/recent-talks/">Meetup Talks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-01T11:00:00-05:00" pubdate data-updated="true">Feb 1<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I had the opportunity to speak at two Meetups in January on the work I&rsquo;ve been doing for the past few months at <a href="http://www.lithium.com/">Lithium</a>. The first talk was at a new Meetup that Lithium started called <a href="http://www.meetup.com/CloudOps/">Cloudops</a> that is oriented towards engineers working devops roles in cloud environments. My talk was a short 15 minute talk (<a href="http://www.slideshare.net/PaulCichonski/cichonski-cloud-ops20140128">slides here</a>) covering strategies for building fault tolerant systems in cloud environments and my thoughts on how to monitor those systems. My favorite part of the talk was introducing <a href="http://en.wikipedia.org/wiki/OODA_loop">Boyd&rsquo;s OODA loop</a> as a process model for devops work. I&rsquo;ve dealt a lot with the OODA loop in my past role at <a href="http://www.nist.gov/">NIST</a> when we were trying to improve the process for <a href="http://csrc.nist.gov/publications/nistpubs/800-61rev2/SP800-61rev2.pdf">IT security incident handling</a> in the industry. I still think OODA is one of the better process models out there since it is abstract enough to remain relevant across many disciplines while still offering value in each individual domain that binds to it.</p>
+
+<p>My second talk was at the <a href="http://www.meetup.com/CassandraSF/">Datastax Cassandra SF Meetup</a> hosted at <a href="http://disqus.com/">Disqus</a>. This talk (<a href="http://www.slideshare.net/PaulCichonski/cassandra-at-lithium">slides here</a>) was a bit more low-level and focused on how we have been using Cassandra at Lithium for the past six months as we move to a more service-oriented architecture internally. This talk was primarily focused on our use case, data model, and all of the issues we dealt with getting Cassandra into production. I also covered the strategy we used for migrating data from MySQL to Cassandra with zero downtime. Our migration strategy was heavily influenced by a Netflix <a href="http://techblog.netflix.com/2013/02/netflix-queue-data-migration-for-high.html">blog post</a> covering a migration from SimpleDB to Cassandra.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/11/10/setting-up-octopress-on-a-new-machine/">Setting Up Octopress on a New Machine</a></h1>
     
     
@@ -621,11 +671,27 @@ about how the component parts of the ecosystem fit together. Lots more to learn 
 <aside class="sidebar">
   
     <section>
+  <h1>About Me</h1>
+  <p>I&#8217;m Paul Cichonski, a software engineer interested in distributed systems, system theory, IT security, andi knowledge representation.</p>
+  <div id="about_icons" align="center">
+<a href="http://twitter.com/paulcichonski"><img src="/images/twitter.png"
+                                             alt="Twitter" /></a>
+<a href="http://github.com/paulcichonski"><img src="/images/github.jpeg"
+                                             alt="Github" /></a>
+<a href="http://www.linkedin.com/in/paulcichonski"><img src="/images/linkedin.png"
+                                             alt="Linkedin" /></a>
+</div>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
         <a href="/blog/2014/07/19/learning-hadoop-webhdfsfilesystem-vs-filesystem/">Learning Hadoop: WebHdfsFileSystem vs FileSystem</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/01/recent-talks/">Meetup Talks</a>
       </li>
     
       <li class="post">
@@ -670,6 +736,15 @@ about how the component parts of the ecosystem fit together. Lots more to learn 
 </script>
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 

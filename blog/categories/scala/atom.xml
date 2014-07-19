@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: scala | paulcichonski.com blog]]></title>
+  <title><![CDATA[Category: scala | paulcichonski.com]]></title>
   <link href="http://paulcichonski.com/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://paulcichonski.com/"/>
-  <updated>2014-07-19T12:25:45-04:00</updated>
+  <updated>2014-07-19T12:34:36-04:00</updated>
   <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
