@@ -3,7 +3,8 @@ layout: post
 title: "Building this Blog with Octopress"
 date: 2013-11-10 15:14
 comments: true
-categories: 
+categories: octopress blogging
+description: How I built the blog your reading using Octopress. 
 ---
 
 I just setup this blog using [Octopress](http://octopress.org/) as the page generation engine and [Github Pages](http://pages.github.com/) to **freely** host the content. In total, it took me about four hours to get from start to first blog post, and that was mainly because my ruby environment on my dev machine was fairly messed up from mucking around six months ago. 

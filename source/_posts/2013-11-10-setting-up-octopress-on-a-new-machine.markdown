@@ -3,8 +3,9 @@ layout: post
 title: "Setting Up Octopress on a new Machine"
 date: 2013-11-10 20:46
 comments: true
-categories: octopress
+categories: octopress blogging
 published: true
+description: You need to run octopress on multiple machines? This post explains how.
 ---
 As soon as I got this blog up and running, the first thing I did was to completely screw up my [Octopress](http://octopress.org/) install (apparently I did need all those files I deleted), thus rendering the entire site useless. As with anything "tinkering" related, this is fairly normal so it is also fairly normal to rebuild from scratch. Luckily, smart people have [already figured out](http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/) how to do this.
 
