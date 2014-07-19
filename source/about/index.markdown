@@ -5,5 +5,5 @@ comments: false
 sharing: false
 footer: false
 ---
-I am a senior software engineer working at [Lithium Technologies](http://www.lithium.com/). I primarily focus on backend development and have recently been working on building out our internal service-oriented infrastructure. My primary interests include distributed systems, functional programming languages, and knowledge representation. 
+I am a software architect working at [Lancope](http://www.lancope.com/). My primary interests include distributed systems, functional programming languages, and knowledge representation. 
 
