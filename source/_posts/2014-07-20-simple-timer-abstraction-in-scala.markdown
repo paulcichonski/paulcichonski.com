@@ -23,12 +23,12 @@ In Scala this is as simple creating a function like this:
 ```
 
 This is a [higher-order function](http://en.wikipedia.org/wiki/Higher-order_function) that will time the execution of whatever 
-function passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function 
+function that gets passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function 
 argument declaration of `execution: () => Unit`; this declares the function argument `execution` as type `() => Unit`. In Scala
 the type declaration comes after the variable name and the two are separated by a `:`. The type declaration in this case defines
-a function that takes zero arguments and that returns nothing (`Unit` here is similar to `void` in Java).
+a function that takes zero arguments (`()` is syntactic sugar for this) and returns nothing (`Unit` here is similar to `void` in Java).
 
-Below are some examples of using this utility function:
+Below are some examples of using this function:
 
 ```scala
 scala> time(() => println("sum of range 0 to 100000000: " + (0 to 100000000).reduce((a, b) => a + b)))
@@ -39,7 +39,7 @@ scala> time(() => Thread.sleep(500))
 execution time: 500ms
 ```
 
-This is only possible thanks to the ability to treat functions as objects. While this won't revolutionize the way you code it is does allow
+Writing code like this is only possible thanks to the ability to treat functions as objects. While this won't revolutionize the way you code it is does allow
 you to start removing the boiler plate code that tends to build up in Java.
 
 This is only the tip of the iceberg in functional programming, if you want to learn more check out the free [Scala by Example](http://www.scala-lang.org/docu/files/ScalaByExample.pdf) book provided
