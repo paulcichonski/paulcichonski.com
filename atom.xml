@@ -4,7 +4,7 @@
   <title><![CDATA[paulcichonski.com]]></title>
   <link href="http://paulcichonski.com/atom.xml" rel="self"/>
   <link href="http://paulcichonski.com/"/>
-  <updated>2014-07-20T21:02:10-04:00</updated>
+  <updated>2014-07-20T21:08:54-04:00</updated>
   <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
@@ -41,12 +41,12 @@ measure latency of various network operations. This is not production code so I 
 
 
 <p>This is a <a href="http://en.wikipedia.org/wiki/Higher-order_function">higher-order function</a> that will time the execution of whatever
-function passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function
+function that gets passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function
 argument declaration of <code>execution: () =&gt; Unit</code>; this declares the function argument <code>execution</code> as type <code>() =&gt; Unit</code>. In Scala
 the type declaration comes after the variable name and the two are separated by a <code>:</code>. The type declaration in this case defines
-a function that takes zero arguments and that returns nothing (<code>Unit</code> here is similar to <code>void</code> in Java).</p>
+a function that takes zero arguments (<code>()</code> is syntactic sugar for this) and returns nothing (<code>Unit</code> here is similar to <code>void</code> in Java).</p>
 
-<p>Below are some examples of using this utility function:</p>
+<p>Below are some examples of using this function:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -63,7 +63,7 @@ a function that takes zero arguments and that returns nothing (<code>Unit</code>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is only possible thanks to the ability to treat functions as objects. While this won&rsquo;t revolutionize the way you code it is does allow
+<p>Writing code like this is only possible thanks to the ability to treat functions as objects. While this won&rsquo;t revolutionize the way you code it is does allow
 you to start removing the boiler plate code that tends to build up in Java.</p>
 
 <p>This is only the tip of the iceberg in functional programming, if you want to learn more check out the free <a href="http://www.scala-lang.org/docu/files/ScalaByExample.pdf">Scala by Example</a> book provided
