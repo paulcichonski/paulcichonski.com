@@ -4,7 +4,7 @@
   <title><![CDATA[paulcichonski.com]]></title>
   <link href="http://paulcichonski.com/atom.xml" rel="self"/>
   <link href="http://paulcichonski.com/"/>
-  <updated>2014-07-19T12:37:20-04:00</updated>
+  <updated>2014-07-20T21:02:10-04:00</updated>
   <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Simple Timer Abstraction in Scala]]></title>
+    <link href="http://paulcichonski.com/blog/2014/07/20/simple-timer-abstraction-in-scala/"/>
+    <updated>2014-07-20T20:25:00-04:00</updated>
+    <id>http://paulcichonski.com/blog/2014/07/20/simple-timer-abstraction-in-scala</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been digging into <a href="http://www.scala-lang.org/">Scala</a> a lot more recently and one of the things that I love is the support for first class functions with a syntax
+that is less verbose than Java (I think it is even better than Java 8&rsquo;s lambdas). For example, I was working on some test code to
+measure latency of various network operations. This is not production code so I don&rsquo;t need anything as powerful as Coda Hale&rsquo;s
+<a href="http://metrics.codahale.com/">Metrics</a> library (which I love for production), I just needed a way to quickly time stuff in code.</p>
+
+<p>In Scala this is as simple creating a function like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">def</span> <span class="n">time</span><span class="o">(</span><span class="n">execution</span><span class="k">:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="nc">Unit</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">start</span> <span class="k">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="o">()</span>
+</span><span class='line'>    <span class="n">execution</span><span class="o">()</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span>
+</span><span class='line'>    <span class="n">println</span><span class="o">(</span><span class="s">&quot;execution time: &quot;</span> <span class="o">+</span> <span class="n">time</span> <span class="o">+</span> <span class="s">&quot;ms&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is a <a href="http://en.wikipedia.org/wiki/Higher-order_function">higher-order function</a> that will time the execution of whatever
+function passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function
+argument declaration of <code>execution: () =&gt; Unit</code>; this declares the function argument <code>execution</code> as type <code>() =&gt; Unit</code>. In Scala
+the type declaration comes after the variable name and the two are separated by a <code>:</code>. The type declaration in this case defines
+a function that takes zero arguments and that returns nothing (<code>Unit</code> here is similar to <code>void</code> in Java).</p>
+
+<p>Below are some examples of using this utility function:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="n">scala</span><span class="o">&gt;</span> <span class="n">time</span><span class="o">(()</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;sum of range 0 to 100000000: &quot;</span> <span class="o">+</span> <span class="o">(</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">100000000</span><span class="o">).</span><span class="n">reduce</span><span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">)))</span>
+</span><span class='line'><span class="n">sum</span> <span class="n">of</span> <span class="n">range</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">100000000</span><span class="k">:</span> <span class="err">987459712</span>
+</span><span class='line'><span class="kt">execution</span> <span class="kt">time:</span> <span class="err">3246</span><span class="kt">ms</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">scala</span><span class="o">&gt;</span> <span class="n">time</span><span class="o">(()</span> <span class="k">=&gt;</span> <span class="nc">Thread</span><span class="o">.</span><span class="n">sleep</span><span class="o">(</span><span class="mi">500</span><span class="o">))</span>
+</span><span class='line'><span class="n">execution</span> <span class="n">time</span><span class="k">:</span> <span class="err">500</span><span class="kt">ms</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is only possible thanks to the ability to treat functions as objects. While this won&rsquo;t revolutionize the way you code it is does allow
+you to start removing the boiler plate code that tends to build up in Java.</p>
+
+<p>This is only the tip of the iceberg in functional programming, if you want to learn more check out the free <a href="http://www.scala-lang.org/docu/files/ScalaByExample.pdf">Scala by Example</a> book provided
+by on the Scala website.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Learning Hadoop: WebHdfsFileSystem vs FileSystem]]></title>

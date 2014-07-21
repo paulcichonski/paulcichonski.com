@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scala | paulcichonski.com]]></title>
   <link href="http://paulcichonski.com/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://paulcichonski.com/"/>
-  <updated>2014-07-19T12:37:20-04:00</updated>
+  <updated>2014-07-20T21:02:10-04:00</updated>
   <id>http://paulcichonski.com/</id>
   <author>
     <name><![CDATA[Paul Cichonski]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Simple Timer Abstraction in Scala]]></title>
+    <link href="http://paulcichonski.com/blog/2014/07/20/simple-timer-abstraction-in-scala/"/>
+    <updated>2014-07-20T20:25:00-04:00</updated>
+    <id>http://paulcichonski.com/blog/2014/07/20/simple-timer-abstraction-in-scala</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been digging into <a href="http://www.scala-lang.org/">Scala</a> a lot more recently and one of the things that I love is the support for first class functions with a syntax
+that is less verbose than Java (I think it is even better than Java 8&rsquo;s lambdas). For example, I was working on some test code to
+measure latency of various network operations. This is not production code so I don&rsquo;t need anything as powerful as Coda Hale&rsquo;s
+<a href="http://metrics.codahale.com/">Metrics</a> library (which I love for production), I just needed a way to quickly time stuff in code.</p>
+
+<p>In Scala this is as simple creating a function like this:</p>
+
+<p>```scala
+  def time(execution: () => Unit) {</p>
+
+<pre><code>val start = System.currentTimeMillis()
+execution()
+val time = System.currentTimeMillis() - start
+println("execution time: " + time + "ms")
+</code></pre>
+
+<p>  }
+```</p>
+
+<p>This is a <a href="http://en.wikipedia.org/wiki/Higher-order_function">higher-order function</a> that will time the execution of whatever
+function passed to it. If you are coming from Java it should look pretty straight forward, the only major difference is the function
+argument declaration of <code>execution: () =&gt; Unit</code>; this declares the function argument <code>execution</code> as type <code>() =&gt; Unit</code>. In Scala
+the type declaration comes after the variable name and the two are separated by a <code>:</code>. The type declaration in this case defines
+a function that takes zero arguments and that returns nothing (<code>Unit</code> here is similar to <code>void</code> in Java).</p>
+
+<p>Below are some examples of using this utility function:</p>
+
+<p>```scala
+scala> time(() => println(&ldquo;sum of range 0 to 100000000: &rdquo; + (0 to 100000000).reduce((a, b) => a + b)))
+sum of range 0 to 100000000: 987459712
+execution time: 3246ms</p>
+
+<p>scala> time(() => Thread.sleep(500))
+execution time: 500ms
+```</p>
+
+<p>This is only possible thanks to the ability to treat functions as objects. While this won&rsquo;t revolutionize the way you code it is does allow
+you to start removing the boiler plate code that tends to build up in Java.</p>
+
+<p>This is only the tip of the iceberg in functional programming, if you want to learn more check out the free <a href="http://www.scala-lang.org/docu/files/ScalaByExample.pdf">Scala by Example</a> book provided
+by on the Scala website.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Learning Hadoop: WebHdfsFileSystem vs FileSystem]]></title>
