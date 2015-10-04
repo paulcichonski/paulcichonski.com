@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://paulcichonski.com/sitemap.xml 
