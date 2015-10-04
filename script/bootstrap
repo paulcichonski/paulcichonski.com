@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR/..
+
+$DIR/teardown
+
+set -e
+
+docker pull node:4.0
+docker-compose pull
+docker-compose build
+
+$DIR/npm install
+$DIR/bower install

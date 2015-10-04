@@ -1,0 +1,33 @@
+emberdata:
+  build: ./dev-env
+  volumes:
+    - /opt/app/bower_components
+    - /opt/app/node_modules
+    - /opt/app/vendor
+    - /opt/app/tmp
+  entrypoint: "/bin/true"
+defaults: &defaults
+  build: ./dev-env
+  volumes_from:
+    - emberdata
+  volumes:
+    - .:/opt/app
+  entrypoint: "/usr/local/bin/ember"
+ember:
+  <<: *defaults
+npm:
+  <<: *defaults
+  entrypoint: "/usr/local/bin/npm"
+bower:
+  <<: *defaults
+  entrypoint: "/usr/local/bin/bower"
+testserver:
+  <<: *defaults
+  command: test --server --host 0.0.0.0
+  ports:
+    - "7357:7357"
+devserver:
+  <<: *defaults
+  command: serve -p 80 --live-reload false
+  ports:
+    - "8080:80"

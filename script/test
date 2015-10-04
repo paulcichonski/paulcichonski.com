@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+set -e
+
+case "$1" in
+  server)
+    ## assumes docker was installed with docker-toolbox
+    ip=$(docker-machine ip default)
+    echo "test server at http://${ip}:7357"
+    docker-compose run --rm --service-ports testserver
+  ;;
+  *)
+    $DIR/ember test "$@"
+  ;;
+esac

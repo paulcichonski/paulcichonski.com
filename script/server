@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $DIR/..
+
+case "$1" in
+  start)
+    ## NOTE: this isn't truly what prod looks like since we are hosting off github
+    ## assumes docker was setup using docker-toolbox
+    ip=$(docker-machine ip default)
+    docker-compose up -d devserver
+    echo "local devserver at http://${ip}:8080"
+  ;;
+  stop)
+    echo "stopping"
+    docker-compose stop devserver
+  ;;
+  restart)
+    $0 stop
+    $0 start
+  ;;
+  *)
+    echo "usage: $0 [start | stop | restart]"
+  ;;
+esac
