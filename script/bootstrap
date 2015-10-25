@@ -12,3 +12,4 @@ docker-compose build
 
 $DIR/npm install
 $DIR/bower install
+$DIR/bower update -f
