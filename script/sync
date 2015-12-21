@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/pre-req-check
 
 ## Requires your boot2docker to have the following in  /var/lib/boot2docker/bootlocal.sh
 #sysctl fs.inotify.max_user_watches=32768
@@ -20,11 +21,6 @@ declare root="$( cd $DIR/../ && pwd )"
 declare unison_ip
 declare unison_port
 
-function docker_ip(){
-  ## assumes docker-machine
-  echo `docker-machine ip default`
-}
-
 function setup_unison() {
   echo "ensuring unison is running"
   unison_status=$(service_status unison)
@@ -35,26 +31,8 @@ function setup_unison() {
   unison_port=$(service_port unison 5000)
 }
 
-## usage: service_port container port
-function service_port(){
-  echo `docker-compose port $1 $2 | sed -E 's/^.+:([0-9]+)/\1/'`
-}
-
 function dosync() {
   unison $root socket://${unison_ip}:${unison_port}//opt/app -path app -path config -path public -path tests -force $root -batch
-}
-
-function service_status(){
-  local name=$1
-  local container=$(docker-compose ps -q $name)
-  if [ ! -z "$container" ] ; then
-    local status=`docker inspect -f '{{.State.Running}}' $container`
-  fi
-  if [ "$status" = "true" ] ; then
-    echo "up"
-  else
-    echo "down"
-  fi
 }
 
 case "$1" in

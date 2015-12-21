@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+function docker_ip(){
+  ## assumes docker-machine
+  echo `docker-machine ip default`
+}
+
+function service_status(){
+  local name=$1
+  local container=$(docker-compose ps -q $name)
+  if [ ! -z "$container" ] ; then
+    local status=`docker inspect -f '{{.State.Running}}' $container`
+  fi
+  if [ "$status" = "true" ] ; then
+    echo "up"
+  else
+    echo "down"
+  fi
+}
+
+## usage: service_port container port
+function service_port(){
+  echo `docker-compose port $1 $2 | sed -E 's/^.+:([0-9]+)/\1/'`
+}
