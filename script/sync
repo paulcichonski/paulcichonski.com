@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+## Requires your boot2docker to have the following in  /var/lib/boot2docker/bootlocal.sh
+#sysctl fs.inotify.max_user_watches=32768
+
+
+command -v fswatch >/dev/null 2>&1 || {
+  echo "fswatch required, did not find"
+  exit
+}
+
+command -v unison >/dev/null 2>&1 || {
+  echo "unison required, did not find"
+  exit
+}
+
+set -e
+declare root="$( cd $DIR/../ && pwd )"
+declare unison_ip
+declare unison_port
+
+function docker_ip(){
+  ## assumes docker-machine
+  echo `docker-machine ip default`
+}
+
+function setup_unison() {
+  echo "ensuring unison is running"
+  unison_status=$(service_status unison)
+  if [ "$unison_status" = "down" ] ; then
+    docker-compose up -d unison
+  fi
+  unison_ip=$(docker_ip)
+  unison_port=$(service_port unison 5000)
+}
+
+## usage: service_port container port
+function service_port(){
+  echo `docker-compose port $1 $2 | sed -E 's/^.+:([0-9]+)/\1/'`
+}
+
+function dosync() {
+  unison $root socket://${unison_ip}:${unison_port}//opt/app -path app -path config -path public -path tests -force $root -batch
+}
+
+function service_status(){
+  local name=$1
+  local container=$(docker-compose ps -q $name)
+  if [ ! -z "$container" ] ; then
+    local status=`docker inspect -f '{{.State.Running}}' $container`
+  fi
+  if [ "$status" = "true" ] ; then
+    echo "up"
+  else
+    echo "down"
+  fi
+}
+
+case "$1" in
+  start)
+    $0 stop
+    echo "starting file syncing"
+    setup_unison
+    echo "performing initial sync"
+    dosync > $DIR/../tmp/sync.log 2>&1
+    echo "starting fswatch"
+    fswatch -l 0.2 --batch-marker=EOF $DIR/../app $DIR/../config $DIR/../public $DIR/../tests | $DIR/sync >> $DIR/../tmp/sync.log 2>&1 &
+    echo "sync logs are written to $DIR/../tmp/sync.log"
+  ;;
+  stop)
+    echo "stopping file syncing"
+    pkill -f "fswatch -l 0.2 --batch-marker=EOF $DIR/../app" || true
+  ;;
+  *)
+    sleep 5
+    setup_unison
+    while read line; do
+      if [ "$line" = "EOF" ] ; then
+        dosync
+      fi
+    done < /dev/stdin
+  ;;
+esac

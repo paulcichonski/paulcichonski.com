@@ -3,4 +3,4 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd $DIR/..
 
 docker-compose kill
-docker-compose rm --f ember npm bower testserver
+docker-compose rm --f ember npm bower testserver devserver unison

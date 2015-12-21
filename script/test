@@ -7,6 +7,7 @@ case "$1" in
   server)
     ## assumes docker was installed with docker-toolbox
     ip=$(docker-machine ip default)
+    $DIR/sync start
     echo "test server at http://${ip}:7357"
     docker-compose run --rm --service-ports testserver
   ;;

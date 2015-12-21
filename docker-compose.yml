@@ -2,10 +2,20 @@ emberdata:
   build: ./dev-env
   volumes:
     - /opt/app/bower_components
+    - /opt/app/dist
     - /opt/app/node_modules
     - /opt/app/vendor
     - /opt/app/tmp
   entrypoint: "/bin/true"
+unison:
+  image: leighmcculloch/unison
+  ports:
+    - "5000"
+  volumes:
+    - /opt/app/app
+    - /opt/app/config
+    - /opt/app/public
+    - /opt/app/tests
 defaults: &defaults
   build: ./dev-env
   volumes_from:
@@ -24,10 +34,16 @@ bower:
 testserver:
   <<: *defaults
   command: test --server --host 0.0.0.0
+  volumes_from:
+    - emberdata
+    - unison
   ports:
     - "7357:7357"
 devserver:
   <<: *defaults
+  volumes_from:
+    - emberdata
+    - unison
   command: serve -p 80 --live-reload false
   ports:
     - "8080:80"
