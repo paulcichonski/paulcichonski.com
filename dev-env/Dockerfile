@@ -2,7 +2,7 @@ FROM node:4.0
 
 ## based on https://hub.docker.com/r/danlynn/ember-cli/
 
-ENV EMBER_CLI_VERSION 1.13.8
+ENV EMBER_CLI_VERSION 1.13.13
 ENV WATCHMAN_VERSION=v3.7.0
 
 RUN npm install -g --unsafe-perm ember-cli@$EMBER_CLI_VERSION
