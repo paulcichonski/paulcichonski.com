@@ -7,10 +7,11 @@ case "$1" in
   start)
     ## NOTE: this isn't truly what prod looks like since we are hosting off github
     ## assumes docker was setup using docker-toolbox
-    ip=$(docker-machine ip default)
     $DIR/sync start
     docker-compose up -d devserver
-    echo "local devserver at http://${ip}:8080"
+    ip=$(docker_ip)
+    port=$(service_port devserver 80)
+    echo "local devserver at http://${ip}:${port}"
   ;;
   stop)
     echo "stopping"

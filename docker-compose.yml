@@ -46,4 +46,4 @@ devserver:
     - unison
   command: serve -p 80 --live-reload false
   ports:
-    - "8080:80"
+    - "80"
